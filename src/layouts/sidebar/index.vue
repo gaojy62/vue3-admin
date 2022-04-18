@@ -49,6 +49,7 @@ const { isCollapsed } = inject<IsCollapsed>('collapsed') as IsCollapsed
 .menu-container {
   height: calc(100vh - var(--logo-height));
   overflow: overlay;
+  overflow-x: hidden;
 }
 
 .menu-container::-webkit-scrollbar {

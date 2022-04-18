@@ -24,10 +24,13 @@ declare module 'vue' {
     ATag: typeof import('ant-design-vue/es')['Tag']
     BasicForm: typeof import('./components/form/src/basic-form.vue')['default']
     Breadcrumb: typeof import('./components/breadcrumb/index.vue')['default']
+    'Carbon:close': typeof import('~icons/carbon/close')['default']
+    'Carbon:closeOutline': typeof import('~icons/carbon/close-outline')['default']
     FormItem: typeof import('./components/form/src/components/form-item.vue')['default']
     FullScreen: typeof import('./components/full-screen/index.vue')['default']
     Hamburger: typeof import('./components/hamburger/index.vue')['default']
     IconContainer: typeof import('./components/icon-container/index.vue')['default']
+    ScrollContainer: typeof import('./components/scroll-container/index.vue')['default']
     SearchInput: typeof import('./components/search-input/index.vue')['default']
   }
 }

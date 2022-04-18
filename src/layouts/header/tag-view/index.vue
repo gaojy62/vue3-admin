@@ -4,7 +4,6 @@ import { resolvePath } from '@/utils/path'
 import type { RouteRecordNormalized, RouteLocationNormalizedLoaded, RouteLocationRaw } from 'vue-router'
 import { useTagView } from '@/store/modules/tag-view'
 import type { AllShowTag } from '@/store/modules/tag-view'
-import { CloseOutlined } from '@ant-design/icons-vue'
 import {formatterStr} from '@/utils/index'
 const route = useRoute()
 const router = useRouter()
@@ -114,6 +113,7 @@ const handleCloseOtherTag = (tag: AllShowTag) => {
   })
 }
 
+
 watch(showContextmenu, (newVal) => {
   if (newVal)
     document.addEventListener('click', closeContextmenu)
@@ -124,20 +124,18 @@ watch(showContextmenu, (newVal) => {
 
 </script>
 <template>
-  <div>
-    <Draggable class="flex justify-start" v-model="allShowTags" item-key="path" tag="div">
+    <Draggable class="overflow-x-hidden  h-full" v-model="allShowTags" item-key="path" tag="transition-group" :component-data="{name:'fade'}">
       <template #item="{ element: tag }">
         <a-tag :title="tag.meta.title" 
-          class="cursor-pointer w-28 truncate" 
+          class="tag-view cursor-pointer w-28 truncate"
           :color="isActiveTag(tag) ? '#2db7f5' : ''"
           @contextmenu.prevent="openContextmenu(tag, $event)" 
           @click="handleClickTag(tag)"
         >
           <template #icon v-if="!tag.isSticky">
-            <!-- <close-outlined @click.stop="handleCloseTag(tag)" /> -->
-            <ant-design:close-outlined @click.stop="handleCloseTag(tag)" class="align-text-top text-xs" />
+            <carbon:close @click.stop="handleCloseTag(tag)" class="text-xs" style="vertical-align: sub;" />
           </template>
-          {{ formatterStr(tag.meta.title, 'upper') }}
+          <span> {{ formatterStr(tag.meta.title, 'upper') }} </span>
         </a-tag>
       </template>
     </Draggable>
@@ -149,7 +147,9 @@ watch(showContextmenu, (newVal) => {
         <a-menu-item key="close-other" @click="handleCloseOtherTag(currentTag)">关闭其他</a-menu-item>
       </a-menu>
     </div>
-  </div>
 </template>
 <style scoped>
+.tag-view {
+  height: 20px;
+}
 </style>
