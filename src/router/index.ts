@@ -125,7 +125,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
          name: 'admin',
          component: () => import('@/views/permission/admin.vue'),
          meta: {
-           title: 'Admin Permission',
+           title: '老长老长老长老长老长老长老长老长的标题',
+          //  title: 'Admin Permission',
            roles: ['admin']
          },
        },

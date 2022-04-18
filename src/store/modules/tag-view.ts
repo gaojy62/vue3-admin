@@ -6,7 +6,8 @@ export interface AllShowTag {
   fullPath: string
   meta?: { [x: string]: any }
   query?: { [x: string]: any }
-  isSticky?: boolean
+  isSticky?: boolean,
+  loaded: boolean
 }
 
 export const useTagView = defineStore("tagView", {
@@ -92,12 +93,12 @@ export const useTagView = defineStore("tagView", {
     deleteRightVisited(router: AllShowTag): Promise<AllShowTag[]> {
       return new Promise((resolve, reject) => {
         if (!router.path) return reject("route path is not exist")
-        let index: number = this.visitedView.length
+        let position: number = this.visitedView.length
         this.visitedView = this.visitedView.filter((r, i) => {
           if (r.path === router.path) {
-            index = i
+            position = i
           }
-          return !router?.isSticky && i <= index
+          return r.isSticky || i <= position
         })
         resolve([...this.visitedView])
       })
@@ -137,6 +138,11 @@ export const useTagView = defineStore("tagView", {
         resolve([...this.cachedView])
       })
     },
+
+    updateVisitedView(visitedView: AllShowTag[]) {
+      this.visitedView = visitedView
+    }
+
   }
 })
 export default useTagView
