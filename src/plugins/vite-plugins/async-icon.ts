@@ -2,7 +2,7 @@ export default function asyncImportIcon() {
   const virtualModuleId = 'virtual:posts/async-icons'
   let resolveVirtualModuleId = ''
   return {
-    name: 'w-async-import-icons', 
+    name: 'async-import-icons', 
     enforce: 'pre',
     resolveId(id: string) {
       if (id.startsWith(virtualModuleId)) {
