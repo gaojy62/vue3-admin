@@ -15,13 +15,15 @@ const { isCollapsed } = inject<IsCollapsed>('collapsed') as IsCollapsed
     collapsible
   >
     <div class="logo">
-      <!-- <img
+      <img
         src="https://v3.cn.vuejs.org/logo.png"
         alt="logo"
-      > -->
-      vue admin
+      >
+      <span v-show="!isCollapsed">vue admin</span> 
     </div>
-    <sidebar-menu class="menu-container" />
+    <div class="menu-container">
+      <sidebar-menu />
+    </div>
   </a-layout-sider>
 </template>
 <style scoped>
@@ -48,7 +50,7 @@ const { isCollapsed } = inject<IsCollapsed>('collapsed') as IsCollapsed
 }
 .menu-container {
   height: calc(100vh - var(--logo-height));
-  overflow: overlay;
+  overflow-y: overlay;
   overflow-x: hidden;
 }
 

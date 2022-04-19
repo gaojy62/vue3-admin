@@ -1,5 +1,5 @@
 <script setup lang="ts" name="SidebarMenuItem">
-import path from 'path-browserify'
+import { resolvePath as _resolvePath } from '@/utils/path'
 import { formatterStr } from '@/utils'
 import type { RouteRecordRaw } from 'vue-router'
 import { defineAsyncComponent } from 'vue'
@@ -12,7 +12,7 @@ const { routerRecords, basePath } = toRefs(props)
 const theShowRoute = ref<RouteRecordRaw>()
 
 const resolvePath = (routePath: string, base: string = basePath.value) => {
-  return path.resolve(base, routePath)
+  return _resolvePath(base, routePath)
 }
 
 const onlyShowOneLine = (routeItem: RouteRecordRaw): Boolean => {
@@ -31,6 +31,11 @@ const onlyShowOneLine = (routeItem: RouteRecordRaw): Boolean => {
   return false
 }
 
+const subMenuIsOpen = (path: string): boolean => {
+  const { matched } = useRoute()
+  return matched.some(route => route.path === path)
+}
+
 </script>
 
 <template>
@@ -41,8 +46,9 @@ const onlyShowOneLine = (routeItem: RouteRecordRaw): Boolean => {
     <router-link :to="resolvePath(theShowRoute.path)">{{ formatterStr(theShowRoute?.meta?.title || 'no title', 'upper') }}</router-link>
   </a-menu-item>
   <a-sub-menu v-else :key="resolvePath(routerRecords.path)">
-    <template #icon v-if="routerRecords?.meta?.icon">
-      <component :is="defineAsyncComponent(routerRecords.meta.icon)" />
+    <template #icon>
+      <ant-design:folder-open-outlined v-if="subMenuIsOpen(routerRecords.path)" />
+      <ant-design:folder-outlined v-else />
     </template>
     <template #title>{{ formatterStr(theShowRoute?.meta?.title || 'no title', 'upper') }}</template>
     <template v-for="item of routerRecords.children" :key="item.key">

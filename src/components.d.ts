@@ -14,6 +14,8 @@ declare module 'vue' {
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     'AntDesign:downOutlined': typeof import('~icons/ant-design/down-outlined')['default']
+    'AntDesign:folderOpenOutlined': typeof import('~icons/ant-design/folder-open-outlined')['default']
+    'AntDesign:folderOutlined': typeof import('~icons/ant-design/folder-outlined')['default']
     'AntDesign:fullscreenExitOutlined': typeof import('~icons/ant-design/fullscreen-exit-outlined')['default']
     'AntDesign:fullscreenOutlined': typeof import('~icons/ant-design/fullscreen-outlined')['default']
     'AntDesign:menuFoldOutlined': typeof import('~icons/ant-design/menu-fold-outlined')['default']

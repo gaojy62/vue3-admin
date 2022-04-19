@@ -34,5 +34,4 @@ watch(currentRoute, ({ path, matched }) => {
     </template>
   </a-menu>
 </template>
-<style scoped>
-</style>
+

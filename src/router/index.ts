@@ -31,9 +31,6 @@ export const staticRoutes: RouteRecordRaw[] = [
     path: "/",
     component: Layout,
     redirect: "/index",
-    meta: {
-      icon: async () => await import("~icons/ant-design/appstore-outlined"),
-    },
     children: [
       {
         path: "index",
@@ -43,7 +40,7 @@ export const staticRoutes: RouteRecordRaw[] = [
           title: "dashboard",
           sticky: true,
           noBreadcrumb: true,
-          icon: async () => await import("~icons/ant-design/appstore-outlined"),
+          icon: () => import("~icons/ant-design/appstore-outlined"),
         },
       },
     ],
@@ -54,7 +51,6 @@ export const staticRoutes: RouteRecordRaw[] = [
     redirect: "/guard/index",
     meta: {
       title: "guard",
-      icon: async () => await import("~icons/ant-design/compass-outlined"),
     },
     children: [
       {
@@ -63,7 +59,7 @@ export const staticRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/guard.vue"),
         meta: {
           title: "guard1",
-          icon: async () => await import("~icons/ant-design/appstore-outlined"),
+          icon: () => import("~icons/ant-design/appstore-outlined"),
         },
       },
     ],
@@ -123,7 +119,6 @@ export const asyncRoutes: RouteRecordRaw[] = [
     redirect: "/permission/user",
     meta: {
       title: "Permission",
-      icon: async () => await import("~icons/ant-design/appstore-outlined"),
       showSideBar: true,
     },
     children: [
@@ -132,22 +127,11 @@ export const asyncRoutes: RouteRecordRaw[] = [
         name: "admin",
         component: () => import("@/views/permission/admin.vue"),
         meta: {
-          title: 'Admin Permission',
-          icon: async () => await import("~icons/ant-design/appstore-outlined"),
+          title: "Admin Permission",
+          icon: () => import("~icons/ant-design/appstore-outlined"),
           roles: ["admin"],
           showSideBar: true,
         },
-        children: [
-          {
-            path: "admin",
-            name: "admin1",
-            component: () => import("@/views/permission/admin.vue"),
-            meta: {
-              title: 'Admin 1',
-              roles: ["admin"],
-            },
-          }
-        ]
       },
       {
         name: "user",
@@ -155,7 +139,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/permission/user.vue"),
         meta: {
           title: "User Permission",
-          icon: async () => await import("~icons/ant-design/appstore-outlined"),
+          icon: () => import("~icons/ant-design/appstore-outlined"),
           roles: ["user"],
         },
       },

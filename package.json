@@ -15,7 +15,7 @@
     "@ant-design/icons-vue": "^6.1.0",
     "@better-scroll/core": "^2.4.2",
     "@vueuse/core": "^7.4.0",
-    "ant-design-vue": "^3.0.0-alpha.14",
+    "ant-design-vue": "^3.2.0",
     "axios": "^0.26.0",
     "echarts": "^5.3.2",
     "js-cookie": "^3.0.1",
